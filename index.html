@@ -1,409 +1,571 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nakuul Agarwaal - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nakuul Agarwaal</title>
+<meta name="description" content="Nakuul Agarwaal: computer engineer studying Information Technology and Commerce at UNSW, Sydney. Experience, case studies and projects across AI, cloud and strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF7; --band:#F0F1EC; --surface:#FFFFFF; --ink:#14213D; --body:#2B3446; --muted:#626B7C; --rule:#D8DBD9; --accent:#1F3A73; --on-accent:#FFFFFF;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",ui-sans-serif,"Segoe UI",Helvetica,Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11151D; --band:#171C26; --surface:#1C2230; --ink:#E9ECF1; --body:#C9CFD8; --muted:#97A0AE; --rule:#2B3240; --accent:#A9BEEA; --on-accent:#11151D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11151D; --band:#171C26; --surface:#1C2230; --ink:#E9ECF1; --body:#C9CFD8; --muted:#97A0AE; --rule:#2B3240; --accent:#A9BEEA; --on-accent:#11151D;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4rem)}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--sans);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:.22em}
+a:hover{color:var(--accent);text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.wrap{width:min(62rem,100% - 2.5rem);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);margin:0;line-height:1.15}
+p{margin:0 0 1rem}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding-top:env(safe-area-inset-top,0px);margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:3.5rem;gap:1rem}
+.mono{font-family:var(--serif);font-size:1.15rem;color:var(--ink);text-decoration:none}
+.nav ul{display:flex;gap:.25rem;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav ul a{display:block;padding:.35rem .6rem;border-radius:999px;font-size:.88rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:background .2s,color .2s}
+.nav ul a:hover{color:var(--ink)}
+.nav ul a.on{background:var(--ink);color:var(--bg)}
+@media (max-width:560px){.mono{display:none}.nav .wrap{justify-content:flex-start}}
+
+/* sections */
+.sec{padding-block:clamp(3.5rem,8vw,5.5rem)}
+.sec:nth-of-type(even){background:var(--band)}
+.sec-head{display:grid;gap:.6rem 3rem;margin-bottom:2.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--ink)}
+@media (min-width:760px){.sec-head{grid-template-columns:1fr 1fr;align-items:end}}
+.sec-head h2{font-size:clamp(2rem,5vw,2.9rem);letter-spacing:-.01em}
+.sec-head p{margin:0;color:var(--muted);max-width:28rem}
+
+/* hero */
+.hero{padding-block:clamp(3.5rem,9vw,6.5rem) clamp(3.5rem,8vw,5.5rem)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-bottom:clamp(2.25rem,5vw,3.5rem)}
+.hero h1{font-size:clamp(2.4rem,8.5vw,6rem);line-height:1;letter-spacing:-.025em;white-space:nowrap}
+.statement{margin:0 0 clamp(2rem,5vw,3rem);padding-left:1.25rem;border-left:3px solid var(--ink);font-family:var(--serif);font-style:italic;font-size:clamp(1.45rem,3.6vw,2.2rem);line-height:1.3;color:var(--ink);max-width:44rem}
+.statement .w{display:inline-block;opacity:0;transform:translateY(.25em);animation:rise .5s ease forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.intro{display:grid;gap:1.5rem 3.5rem}
+@media (min-width:860px){.intro{grid-template-columns:1.6fr 1fr}}
+.intro-text{font-family:var(--serif);font-size:1.18rem;line-height:1.7;color:var(--body)}
+.intro-text p{max-width:38rem}
+.facts{list-style:none;margin:0;padding:0;font-size:.94rem;align-self:start}
+.facts li{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;padding:.7rem 0;border-top:1px solid var(--rule)}
+.facts li:last-child{border-bottom:1px solid var(--rule)}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{color:var(--ink)}
+.hero-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.25rem}
+.pill{display:inline-flex;align-items:center;min-height:2.75rem;padding:.55rem 1.15rem;border:1px solid var(--ink);border-radius:999px;font-size:.94rem;font-weight:500;color:var(--ink);text-decoration:none;transition:background .2s,color .2s}
+.pill:hover{background:var(--ink);color:var(--bg);text-decoration:none}
+.pill.solid{background:var(--ink);color:var(--bg)}
+.pill.solid:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+/* experience */
+.roles{list-style:none;margin:0;padding:0}
+.role{border-bottom:1px solid var(--rule)}
+.role summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:.25rem 1.5rem;padding:1.3rem 0;align-items:baseline}
+.role summary::-webkit-details-marker{display:none}
+.role h3{font-size:clamp(1.25rem,2.6vw,1.55rem)}
+.role .where{grid-column:1;color:var(--muted);font-size:.95rem}
+.role .when{grid-column:2;grid-row:1;color:var(--muted);font-size:.9rem;white-space:nowrap}
+.role .plus{grid-column:2;grid-row:2;justify-self:end;width:1.75rem;height:1.75rem;border:1px solid var(--rule);border-radius:50%;display:grid;place-items:center;font-size:1rem;line-height:1;transition:transform .25s,border-color .2s}
+.role summary:hover .plus{border-color:var(--ink)}
+.role[open] .plus{transform:rotate(45deg);border-color:var(--ink)}
+.role .detail{padding:0 0 1.5rem;max-width:42rem}
+.role ul{margin:0 0 1rem;padding-left:1.1rem}
+.role li{margin-bottom:.4rem}
+.tools{font-size:.9rem;color:var(--muted);margin:0}
+.tools b{font-weight:500;color:var(--ink)}
+.more-btn{margin-top:1.5rem;font-size:.94rem;font-weight:500;color:var(--ink);text-decoration:underline;text-underline-offset:.22em}
+.more-btn:hover{color:var(--accent)}
+.edu{display:grid;gap:1.5rem 3rem}
+@media (min-width:760px){.edu{grid-template-columns:1fr 1fr}}
+.edu h3{font-size:1.25rem;margin-bottom:.3rem}
+.edu p{margin:0;font-size:.95rem;color:var(--muted)}
+.sub-label{font-family:var(--serif);font-size:1.4rem;color:var(--ink);margin:0 0 1.25rem}
+
+/* cases */
+.cases{display:grid;gap:2.5rem 3rem}
+@media (min-width:760px){.cases{grid-template-columns:1fr 1fr}}
+.case{border-top:3px solid var(--ink);padding-top:1.25rem}
+.cases{grid-template-columns:1fr!important}
+.case.wide h3{font-size:clamp(2.2rem,5vw,3rem)}
+.case.wide .found{margin-top:1.5rem}
+@media (min-width:860px){.case.wide{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:start}.case.wide p{max-width:34rem}.case.wide .found{margin-top:.4rem}}
+.case .kind{font-size:.88rem;color:var(--muted);margin-bottom:.4rem}
+.case h3{font-size:clamp(1.9rem,4vw,2.4rem);margin-bottom:.75rem}
+.case p{max-width:28rem}
+.case .found{margin:0 0 1rem;padding-left:1.1rem;font-size:.95rem}
+.case .found li{margin-bottom:.35rem}
+.case .row{display:flex;flex-wrap:wrap;gap:1.25rem;align-items:center;margin-top:1.25rem}
+.linkish{font-size:.94rem;font-weight:500;text-decoration:underline;text-underline-offset:.22em;color:var(--ink)}
+.linkish:hover{color:var(--accent)}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.filters button{padding:.45rem 1rem;border:1px solid var(--rule);border-radius:999px;font-size:.9rem;color:var(--muted);transition:all .2s}
+.filters button:hover{border-color:var(--ink);color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.projects{list-style:none;margin:0;padding:0;display:grid;gap:0 3rem}
+@media (min-width:760px){.projects{grid-template-columns:1fr 1fr}}
+.project{border-top:1px solid var(--rule);padding:1.4rem 0 1.8rem}
+.project[hidden]{display:none}
+.project h3{font-size:1.35rem;margin-bottom:.45rem}
+.project .tag{display:inline-block;margin-bottom:.6rem;font-size:.8rem;color:var(--accent);font-weight:500}
+.project p{font-size:.97rem;margin-bottom:.7rem}
+.project.featured{grid-column:1 / -1;border-top:3px solid var(--ink)}
+@media (min-width:760px){.project.featured .inner{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem}}
+.project.featured h3{font-size:clamp(1.6rem,3.4vw,2rem)}
+.abstract{margin-top:.25rem;font-size:.95rem}
+.abstract[hidden]{display:none}
+
+/* volunteering */
+.vol{list-style:none;margin:0;padding:0;display:grid;gap:0 3rem}
+@media (min-width:760px){.vol{grid-template-columns:1fr 1fr}}
+.vol li{border-top:1px solid var(--rule);padding:1.15rem 0 1.3rem}
+.vol li[hidden]{display:none}
+.vol h3{font-size:1.2rem}
+.vol .r{font-size:.9rem;color:var(--accent);font-weight:500;margin:.15rem 0 .4rem}
+.vol p{margin:0;font-size:.95rem}
+.certs{list-style:none;margin:0;padding:0}
+.certs li{display:grid;grid-template-columns:1fr auto;gap:.1rem 1rem;padding:.75rem 0;border-top:1px solid var(--rule);font-size:.95rem}
+.certs li:last-child{border-bottom:1px solid var(--rule)}
+.certs li[hidden]{display:none}
+.certs b{font-weight:500;color:var(--ink)}
+.certs .y{color:var(--muted);white-space:nowrap}
+.certs .by{grid-column:1 / -1;color:var(--muted);font-size:.88rem}
+
+/* contact */
+.contact{background:var(--ink)!important;color:var(--bg)}
+.contact .sec-head{border-color:var(--bg)}
+.contact h2,.contact h3{color:var(--bg)}
+.contact .sec-head p{color:color-mix(in srgb,var(--bg) 70%,var(--ink));max-width:none}
+@media (min-width:760px){.contact .sec-head p{white-space:nowrap;justify-self:end}}
+.mail-row{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-bottom:2.5rem}
+.mail{font-family:var(--serif);font-size:clamp(1.35rem,4.5vw,2.4rem);color:var(--bg);text-decoration:none;word-break:break-all}
+.mail:hover{color:var(--bg);text-decoration:underline;text-decoration-thickness:1px}
+.copy{padding:.5rem 1rem;border:1px solid var(--bg);border-radius:999px;font-size:.9rem;color:var(--bg);min-height:2.6rem;transition:background .2s,color .2s}
+.copy:hover{background:var(--bg);color:var(--ink)}
+.contact .pill{border-color:var(--bg);color:var(--bg)}
+.contact .pill:hover{background:var(--bg);color:var(--ink)}
+.contact .pill.solid{background:var(--bg);color:var(--ink)}
+footer{background:var(--ink);color:color-mix(in srgb,var(--bg) 60%,var(--ink));font-size:.88rem;}
+footer .tag{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--bg)}
+footer{padding:0 0 2rem}
+footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem;border-top:1px solid color-mix(in srgb,var(--bg) 25%,var(--ink));padding-top:1.5rem}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .statement .w{animation:none;opacity:1;transform:none}
+  .role .plus,.nav ul a,.pill,.filters button{transition:none}
+}
+</style>
 </head>
 <body>
-    <!-- Animated Background -->
-    <canvas id="backgroundCanvas"></canvas>
-    
-    <!-- Floating Geometric Shapes - Dynamically Generated -->
-    <div class="floating-shapes" id="floatingShapes"></div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="section hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title" data-scroll="hero">Hi, I'm Nakuul</h1>
-                <p class="hero-welcome" data-scroll="welcome">Welcome to my Portfolio</p>
-                <p class="hero-subtitle" data-scroll="subtitle">Making sense of Tech, Data and Business</p>
-            </div>
-        </section>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="mono" href="#about">Nakuul Agarwaal</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#cases">Case studies</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#volunteering">Volunteering</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <!-- About Section -->
-        <section id="about" class="section about-section">
-            <div class="section-container">
-                <div class="about-content" data-scroll="fade-up">
-                    <h2 class="section-title">About</h2>
-                    <p class="about-text">I like solving problems that matter and building things that make sense. My background is in Computer Science, and now I'm deepening my toolkit at UNSW through dual master's studies in Data Science and Strategy. I enjoy working through complexity, breaking ideas down, understanding how things fit together, and designing practical solutions. I appreciate clarity, calm execution, and environments where ideas and discipline win over noise.</p>
-                    <p class="about-text">Outside the academic labels, I'm someone who wants to understand systems whether it's finance, technology, product decisions, or human behavior. That curiosity shapes how I work and think. Right now, I'm building the foundation to operate in tech and business at a high level sharpening execution, judgment, and perspective one step at a time.</p>
-                </div>
-            </div>
-        </section>
+<main>
+  <section id="about" class="sec hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1>Nakuul Agarwaal</h1>
+      </div>
 
-        <section id="experience" class="section experience-section">
-  <div class="section-container">
-    <h2 class="section-title">Work Experience</h2>
+      <p class="statement" id="statement">I don't want to solve a problem once. I want to solve it for every way it could show up, and see the next three coming.</p>
 
-    <div class="experience-grid">
-
-      <article class="experience-card">
-        <h3 class="experience-title">IT Infrastructure Assistant – Technology Delivery</h3>
-        <div class="experience-company">University of New South Wales (UNSW) · Sydney, Australia</div>
-        <div class="experience-dates">Dec 2025 – Present</div>
-        <ul class="experience-highlights">
-          <li>Deliver first-level IT infrastructure support for university network services, to maintain operational continuity across campus.</li>
-          <li>Assist in service activation, tesing, maintenance and incident response.</li>
-          <li>Perform initial fault diagnosis, escalaing issues as required to meet service priories and response timeframes.</li>
-          <li>Support infrastructure upkeep through site audits, equipment checks, upgrades and infrastructure maintenance.</li>
+      <div class="intro">
+        <div class="intro-text">
+          <p>Hi, I'm Nakuul. Engineer by profession, strategist by mindset. I studied computer engineering in India and I'm now doing a dual master's in Information Technology and Commerce at UNSW, Sydney.</p>
+          <p>Most people meet a problem and reach for a fix. I like to stay with it a little longer: understand what's really going on, see it through the customer's eyes, then play out what happens next. What changes, what breaks, what grows. The answer I'm after is the one that still holds up a year later.</p>
+          <p>That's why I work where technology meets business. AI, machine learning and cloud on one side, strategy, innovation and data-driven decisions on the other. They're at their most interesting together, especially in fintech, startups and emerging tech.</p>
+          <p>When I'm not working, I'm usually exploring a new corner of the city or hunting down a food spot worth the trip.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Based in</span><span>Sydney, Australia</span></li>
+          <li><span>Studying</span><span>Data Science and Strategy, UNSW</span></li>
+          <li><span>Currently</span><span>IT Infrastructure, UNSW</span></li>
+          <li><span>Focus</span><span>AI, cloud, business strategy</span></li>
         </ul>
-      </article>
-
-      <article class="experience-card">
-        <h3 class="experience-title">DevOps Engineer</h3>
-        <div class="experience-company">IAMOPS · Pune, India</div>
-        <div class="experience-dates">Jan 2025 – Jul 2025</div>
-        <ul class="experience-highlights">
-          <li>Gained hands-on experience with AWS and GCP services for cloud infrastructure and deployment.</li>
-          <li>Worked on S3 bucket management, EC2 instance setup, and Lambda functions for serverless computing.</li>
-          <li>Managed and guided interns while collaborating with DevOps and QA teams.</li>
-        </ul>
-      </article>
-
-      <article class="experience-card">
-        <h3 class="experience-title">Lead Placement Coordinator</h3>
-        <div class="experience-company">Ajeenkya DY Patil University · Pune, India</div>
-        <div class="experience-dates">Apr 2024 – May 2025</div>
-        <ul class="experience-highlights">
-          <li>Managed the placement process ensuring smooth recruitment for students and companies.</li>
-          <li>Coordinated with recruiters and organized on-campus recruitment drives.</li>
-          <li>Streamlined the hiring process using POD.AI application.</li>
-        </ul>
-      </article>
-
-      <article class="experience-card">
-        <h3 class="experience-title">Management Lead</h3>
-        <div class="experience-company">Google DSC · Pune, India</div>
-        <div class="experience-dates">Aug 2022 – Oct 2023</div>
-        <ul class="experience-highlights">
-          <li>Conducted sessions and workshops on Kotlin, AI, and ML impacting 100+ students.</li>
-          <li>Headed the first technology-focused club creating a culture shift toward peer learning.</li>
-          <li>Led a team of 10 leads to architect and accomplish organizational goals.</li>
-        </ul>
-      </article>
-
-      <article class="experience-card">
-        <h3 class="experience-title">Graphic Designer</h3>
-        <div class="experience-company">Startup Pedia · India</div>
-        <div class="experience-dates">Jan 2022 – Jun 2022</div>
-        <ul class="experience-highlights">
-          <li>Designed branding materials and social media graphics to enhance digital presence.</li>
-          <li>Created and managed Instagram posts to boost engagement.</li>
-          <li>Collaborated with marketing team on brand identity projects.</li>
-        </ul>
-      </article>
-
-      <article class="experience-card">
-        <h3 class="experience-title">Intern</h3>
-        <div class="experience-company">The Sparks Foundation · Pune, India</div>
-        <div class="experience-dates">Oct 2021 – Mar 2022</div>
-        <ul class="experience-highlights">
-          <li>Worked on projects related to web development, data science, and community engagement.</li>
-          <li>Assisted in building applications for social impact.</li>
-          <li>Gained hands-on experience with real-world data and problem-solving.</li>
-        </ul>
-      </article>
+      </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
+  <section id="experience" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>Experience across domains in Australia and India. Tap a role for details.</p>
+      </div>
 
-        <!-- Education Section -->
-        <section id="education" class="section education-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Education</h2>
-                <div class="education-grid" data-scroll="stagger">
-                    <div class="education-card">
-                        <h3 class="education-degree">Master of Information Technology and Commerce</h3>
-                        <p class="education-specialisation">Specialisation: Data Science &amp; Engineering and Strategy &amp; Innovation</p>
-                        <p class="education-university">University of New South Wales</p>
-                        <p class="education-location">Sydney, Australia</p>
-                        <p class="education-year">Expected 2028</p>
-                    </div>
-                    <div class="education-card">
-                        <h3 class="education-degree">Bachelor of Technology in Computer Engineering</h3>
-                        <p class="education-specialisation">Specialisation: Artificial Intelligence and Machine Learning</p>
-                        <p class="education-university">Ajeenkya DY Patil University</p>
-                        <p class="education-location">Pune, India</p>
-                        <p class="education-year">2025</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <ul class="roles">
+        <li><details class="role" open>
+          <summary><h3>IT Infrastructure Assistant</h3><span class="when">Dec 2025 – now</span><span class="where">UNSW, Technology Delivery, Sydney</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Provide first-level support for university network services to keep the campus running.</li>
+              <li>Support service activation, testing, maintenance and incident response.</li>
+              <li>Diagnose faults and escalate to meet service priorities and response times.</li>
+              <li>Run site audits, equipment checks, upgrades and infrastructure maintenance.</li>
+            </ul>
+            <p class="tools"><b>Work involves</b> network services, incident response, infrastructure audits</p>
+          </div>
+        </details></li>
 
-        <!-- Certificates Section -->
-        <section id="certificates" class="section certificates-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Certificates &amp; Certifications</h2>
-                <div class="certificates-grid" data-scroll="stagger">
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Oracle Cloud Infrastructure Foundations Associate</h3>
-                        <p class="certificate-issuer">Oracle</p>
-                        <p class="certificate-date">Nov 2024</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">AWS Cloud Practitioner</h3>
-                        <p class="certificate-issuer">Amazon Web Services</p>
-                        <p class="certificate-date">Sep 2023</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Natural Language Processing</h3>
-                        <p class="certificate-issuer">DeepLearning.AI</p>
-                        <p class="certificate-date">Apr 2023</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Introduction to Artificial Intelligence</h3>
-                        <p class="certificate-issuer">IBM</p>
-                        <p class="certificate-date">Dec 2022</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Google Cloud Platform</h3>
-                        <p class="certificate-issuer">Google Developers Group</p>
-                        <p class="certificate-date">Oct 2022</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Python for Everybody</h3>
-                        <p class="certificate-issuer">University of Michigan</p>
-                        <p class="certificate-date">Sep 2022</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Virtual Reality</h3>
-                        <p class="certificate-issuer">Ajeenkya DY Patil University</p>
-                        <p class="certificate-date">Apr 2022</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Basics of Financial Markets</h3>
-                        <p class="certificate-issuer">Elearnmarkets</p>
-                        <p class="certificate-date">Feb 2022</p>
-                    </div>
-                    <div class="certificate-card">
-                        <h3 class="certificate-title">Programming in C++</h3>
-                        <p class="certificate-issuer">Aptech</p>
-                        <p class="certificate-date">Jan 2019</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <li><details class="role">
+          <summary><h3>DevOps Engineer Intern</h3><span class="when">Jan – Jul 2025</span><span class="where">IAMOPS, Pune</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Worked hands-on with AWS and GCP on cloud infrastructure and deployment.</li>
+              <li>Managed S3 buckets, set up EC2 instances and built Lambda functions for serverless workloads.</li>
+              <li>Worked with DevOps and QA teams and directly with clients to meet project requirements.</li>
+              <li>Guided interns, oversaw their tasks and reported on progress.</li>
+            </ul>
+            <p class="tools"><b>Tools</b> AWS (S3, EC2, Lambda), GCP</p>
+          </div>
+        </details></li>
 
-        <!-- Volunteering Section -->
-        <section id="volunteering" class="section volunteering-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Volunteering &amp; Community Service</h2>
-                <div class="volunteering-grid" data-scroll="stagger">
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">National Cadet Corps (NCC)</h3>
-                        <p class="volunteering-position">Corporal</p>
-                        <p class="volunteering-description">Served in NCC, focusing on discipline, leadership, and national service. Engaged in civil rights and social action programs.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">International Society for Krishna Consciousness (ISKCON)</h3>
-                        <p class="volunteering-position">Coordinator of Volunteers</p>
-                        <p class="volunteering-description">Managed volunteer activities for social service initiatives. Led teams to organize community programs and outreach activities.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">Art of Living</h3>
-                        <p class="volunteering-position">Volunteer</p>
-                        <p class="volunteering-description">Participated in social service programs promoting mental well-being, stress management, and community development.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">National Service Scheme (NSS)</h3>
-                        <p class="volunteering-position">Student Volunteer</p>
-                        <p class="volunteering-description">Contributed to community service projects including awareness campaigns and rural development activities.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">Reap Benefit</h3>
-                        <p class="volunteering-position">Environmental Volunteer</p>
-                        <p class="volunteering-description">Engaged in environmental initiatives and sustainability projects promoting eco-friendly practices.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">Smile Foundation</h3>
-                        <p class="volunteering-position">Fundraiser</p>
-                        <p class="volunteering-description">Worked toward child welfare and education by raising funds for underprivileged children.</p>
-                    </div>
-                    <div class="volunteering-card">
-                        <h3 class="volunteering-role">Ajeenkya DY Patil University</h3>
-                        <p class="volunteering-position">Event Organiser</p>
-                        <p class="volunteering-description">Organized cultural and technical events managing logistics and execution of university programs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <li><details class="role">
+          <summary><h3>Lead Placement Coordinator</h3><span class="when">Apr 2024 – May 2025</span><span class="where">Ajeenkya DY Patil University, Pune</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Ran the placement process end to end for students and recruiting companies.</li>
+              <li>Posted campus recruitment drives through the POD.AI platform.</li>
+              <li>Shared candidate data with recruiters and coordinated interviews.</li>
+              <li>Organised on-campus drives and streamlined the hiring process.</li>
+            </ul>
+            <p class="tools"><b>Work involves</b> stakeholder coordination, process design, POD.AI</p>
+          </div>
+        </details></li>
 
-        <!-- Publications Section -->
-        <section id="publications" class="section publications-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Publications</h2>
-                <div class="publications-container" data-scroll="fade-up">
-                    <div class="publication-card">
-                        <h3 class="publication-title">AI &amp; ML-Based Data Duplication Alert System</h3>
-                        <p class="publication-date">Dec 18, 2024</p>
-                        <p class="publication-description">This research paper introduces an intelligent system that helps detect and prevent unnecessary file downloads using machine learning. By monitoring download requests, user actions, and metadata, the system identifies patterns suggesting accidental duplicate downloads. It uses advanced techniques like anomaly detection, behavior-based clustering, and predictive analysis with models such as Isolation Forest, DBSCAN, LSTM, and decision tree ensembles to distinguish intentional downloads from accidental repeats. This solution is especially useful for businesses and cloud storage providers looking to save bandwidth and maintain efficient data systems.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <li class="older" hidden><details class="role">
+          <summary><h3>Management Lead</h3><span class="when">Aug 2022 – Oct 2023</span><span class="where">Google Developer Student Clubs, Pune</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Ran sessions and workshops on Kotlin, AI and ML for 100+ students.</li>
+              <li>Headed the university's first and only technology club, shifting students toward peer learning.</li>
+              <li>Led a team of 10 leads to plan and deliver the club's goals.</li>
+            </ul>
+            <p class="tools"><b>Work involves</b> leadership, public speaking, Kotlin, AI and ML</p>
+          </div>
+        </details></li>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section projects-section">
-        <div class="section-container">
-          <h2 class="section-title" data-scroll="fade-up">Projects</h2>
-          <div class="projects-grid" data-scroll="stagger">
-            <div class="project-card">
-              <h3 class="project-title">Sign Language Translation using Hand Detection</h3>
-              <p class="project-short">Detects hand gestures and translates sign language into text. Accessibility + AI.</p>
-              <p class="project-long">Computer-vision system to detect hand gestures and translate sign language into text.</p>
-              <p class="project-focus"><strong>Focus:</strong> OpenCV, gesture recognition, ML pipeline, assistive tech use-case</p>
-            </div>
+        <li class="older" hidden><details class="role">
+          <summary><h3>Graphic Designer</h3><span class="when">Jan – Jun 2022</span><span class="where">Startup Pedia</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Designed branding materials and social media graphics.</li>
+              <li>Created and managed Instagram posts to grow engagement.</li>
+              <li>Worked with the marketing team to strengthen digital presence.</li>
+            </ul>
+          </div>
+        </details></li>
 
-            <div class="project-card">
-              <h3 class="project-title">Chat Bot</h3>
-              <p class="project-short">Rule-based text assistant to automate conversations.</p>
-              <p class="project-long">Rule-based chatbot handling automated responses via text interaction.</p>
-              <p class="project-focus"><strong>Focus:</strong> NLP fundamentals, Python scripting, conversation flow logic</p>
-            </div>
+        <li class="older" hidden><details class="role">
+          <summary><h3>Intern</h3><span class="when">Oct 2021 – Mar 2022</span><span class="where">The Sparks Foundation, Pune</span><span class="plus" aria-hidden="true">+</span></summary>
+          <div class="detail">
+            <ul>
+              <li>Worked on web development, data science and community engagement projects.</li>
+              <li>Helped build applications and features for social impact.</li>
+              <li>Got hands-on with real-world data and problem-solving.</li>
+            </ul>
+          </div>
+        </details></li>
+      </ul>
+      <button class="more-btn" id="moreRoles" aria-expanded="false">Show 3 earlier roles</button>
 
-            <div class="project-card">
-              <h3 class="project-title">Stock Market Analysis</h3>
-              <p class="project-short">Analyzes stock trends and patterns with Python and visualizations.</p>
-              <p class="project-long">Data-driven stock trend and pattern exploration using historical datasets.</p>
-              <p class="project-focus"><strong>Focus:</strong> Python, Pandas, visualization, financial data interpretation</p>
-            </div>
+      <h3 class="sub-label" style="margin-top:3.5rem">Education</h3>
+      <div class="edu">
+        <div>
+          <h3>Master of Information Technology and Commerce</h3>
+          <p>UNSW, Sydney. Data Science and Engineering, Strategy and Innovation. Expected 2028.</p>
+        </div>
+        <div>
+          <h3>Bachelor of Technology in Computer Engineering</h3>
+          <p>Ajeenkya DY Patil University, Pune. Artificial Intelligence and Machine Learning. 2025.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="project-card">
-              <h3 class="project-title">Automatic Attendance System</h3>
-              <p class="project-short">Automates attendance recording for offline/online environments.</p>
-              <p class="project-long">Python tool to automate attendance handling for offline/online environments.</p>
-              <p class="project-focus"><strong>Focus:</strong> Automation scripting, CSV handling, user convenience workflows</p>
-            </div>
-
-            <div class="project-card">
-              <h3 class="project-title">Office Stand-Up Automation</h3>
-              <p class="project-short">Automates daily stand-ups by selecting leaders and prompting updates.</p>
-              <p class="project-long">Script automating daily stand-up tasks like selecting a leader and prompting questions.</p>
-              <p class="project-focus"><strong>Focus:</strong> Workflow automation, Python scripting, team productivity</p>
-            </div>
-
-            <div class="project-card">
-              <h3 class="project-title">AI Voice Assistant</h3>
-              <p class="project-short">Voice-controlled assistant for basic task automation.</p>
-              <p class="project-long">Voice-controlled assistant with speech recognition and automated task execution.</p>
-              <p class="project-focus"><strong>Focus:</strong> Speech-to-text, Python automation, assistant workflows</p>
-            </div>
-
-            <div class="project-card">
-              <h3 class="project-title">Vodafone Strategic Business Case Study</h3>
-              <p class="project-short">Explores Vodafone’s telecom model, customer offerings, and service-based revenue strategy.</p>
-              <p class="project-long">Business case study examining Vodafone’s revenue streams, customer plans, digital engagement, and operational efficiency to evaluate performance and growth potential.</p>
-              <p class="project-focus"><strong>Focus:</strong> Telecom strategy, monetisation, retention, digital experience</p>
-              <a href="https://nakuul01.github.io/Vodafone/" target="_blank" rel="noopener noreferrer" class="project-link">View Project</a>
-            </div>
-
-            <div class="project-card">
-              <h3 class="project-title">HSBC Strategic Business Case Study</h3>
-              <p class="project-short">Examines HSBC’s banking model, income structure, and digital service expansion.</p>
-              <p class="project-long">Business case study analysing banking solutions, technology investment, risk infrastructure, and digital transformation to assess efficiency and long-term competitive value.</p>
-              <p class="project-focus"><strong>Focus:</strong> Banking strategy, financial structure, digital services, process efficiency</p>
-              <a href="https://nakuul01.github.io/HSBC/" target="_blank" rel="noopener noreferrer" class="project-link">View Project</a>
+  <section id="cases" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Case studies</h2>
+        <p>How companies and cities work, and where technology and better design change the picture.</p>
+      </div>
+      <div class="cases">
+        <article class="case wide">
+          <div>
+            <div class="kind">Public transport proposal</div>
+            <h3>OneTap Bharat</h3>
+            <p>India leads the world in digital payments, but a Mumbai commuter still can't tap one card and ride everything. Riding Sydney's Opal network every day, I designed a proposal to give Mumbai one card for every train, Metro and bus, with a weekly limit on what you pay.</p>
+            <div class="row">
+              <button class="linkish" data-toggle="onetap-more" aria-expanded="false" aria-controls="onetap-more">What I looked at</button>
+              <a class="linkish" href="https://nakuul01.github.io/OneTap-Bharat/" target="_blank" rel="noopener">See the solution</a>
             </div>
           </div>
-        </div>
-      </section>
+          <ul class="found" id="onetap-more" hidden>
+            <li>Followed one real commute, Virar to Ghatkopar, across train, Metro and bus: three payment systems, two or three apps, and about ₹452 a week with no cap.</li>
+            <li>Benchmarked Sydney's Opal fare rules and costs, then designed a fare layer for Mumbai: ₹5 off for switching modes, a ₹350 weekly cap, and rail never costing more than the season pass.</li>
+            <li>Estimated the build at ₹165–435 crore against Opal's ₹8,200 crore, showing the real decision is the discount subsidy, not the technology.</li>
+            <li>Planned a four-phase rollout and risk response built around a revenue-sharing agreement with Indian Railways.</li>
+          </ul>
+        </article>
+        <article class="case wide">
+          <div>
+          <div class="kind">Banking strategy</div>
+          <h3>HSBC</h3>
+          <p>How HSBC's banking and financial services earn their income, and how digital services are expanding that base.</p>
+          <div class="row">
+            <button class="linkish" data-toggle="hsbc-more" aria-expanded="false" aria-controls="hsbc-more">What I looked at</button>
+            <a class="linkish" href="https://nakuul01.github.io/HSBC/" target="_blank" rel="noopener">See the solution</a>
+          </div>
+                  </div>
+          <ul class="found" id="hsbc-more" hidden>
+            <li>Mapped income streams and customer banking solutions.</li>
+            <li>Analysed technology investment, cloud-based risk infrastructure and digital transformation.</li>
+            <li>Identified gains in customer value, process efficiency and risk responsiveness in a digital-first market.</li>
+          </ul>
+        </article>
+        <article class="case wide">
+          <div>
+          <div class="kind">Telecom strategy</div>
+          <h3>Vodafone</h3>
+          <p>How Vodafone structures its telecom business around customer offerings, service revenue and digital engagement.</p>
+          <div class="row">
+            <button class="linkish" data-toggle="voda-more" aria-expanded="false" aria-controls="voda-more">What I looked at</button>
+            <a class="linkish" href="https://nakuul01.github.io/Vodafone/" target="_blank" rel="noopener">See the solution</a>
+          </div>
+                  </div>
+          <ul class="found" id="voda-more" hidden>
+            <li>Evaluated customer plans, service monetisation and operating efficiency as performance drivers.</li>
+            <li>Assessed retention potential and digital engagement strategy.</li>
+            <li>Highlighted upside from customer adoption and scalable growth across core operations.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section skills-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Skills &amp; Expertise</h2>
-                <div class="skills-container" data-scroll="stagger">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Technical</h3>
-                        <ul class="skill-list">
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>Pandas, NumPy</li>
-                            <li>Power BI / Tableau</li>
-                            <li>Excel workflows &amp; automation</li>
-                            <li>Machine learning fundamentals</li>
-                            <li>Git, Jupyter</li>
-                            <li>APIs basics</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Analytical &amp; Product Thinking</h3>
-                        <ul class="skill-list">
-                            <li>Problem structuring</li>
-                            <li>Data interpretation &amp; insight generation</li>
-                            <li>User/problem understanding</li>
-                            <li>Documentation &amp; requirement breakdown</li>
-                            <li>Decision frameworks</li>
-                            <li>Systems thinking</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Professional Strengths</h3>
-                        <ul class="skill-list">
-                            <li>Clear communication</li>
-                            <li>Logical reasoning</li>
-                            <li>Calm execution</li>
-                            <li>Adaptability</li>
-                            <li>Reliable follow-through</li>
-                        </ul>
-                    </div>
-                </div>
+  <section id="projects" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Projects and research</h2>
+        <p>Machine learning, data and hardware builds, including published research.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button aria-pressed="true" data-filter="all">All</button>
+        <button aria-pressed="false" data-filter="ai">AI and ML</button>
+        <button aria-pressed="false" data-filter="data">Data and finance</button>
+        <button aria-pressed="false" data-filter="hw">Hardware</button>
+      </div>
+      <ul class="projects">
+        <li class="project featured" data-cat="ai data">
+          <div class="inner">
+            <div>
+              <span class="tag">Published research, December 2024</span>
+              <h3>ML-based data duplication alert system</h3>
+              <p>An anomaly detection system that stops redundant downloads on cloud platforms. It reads download requests, user behaviour and file metadata to tell intentional downloads from accidental repeats, cutting storage costs and wasted bandwidth.</p>
+              <button class="linkish" data-toggle="abs" aria-expanded="false" aria-controls="abs">Read the abstract</button>
+              <p class="abstract" id="abs" hidden>The paper introduces an intelligent system that detects and prevents unnecessary file downloads. By monitoring download requests, user actions and related metadata, it spots patterns suggesting files are being downloaded more than once by mistake. Anomaly detection, behaviour-based clustering and predictive analysis separate intentional downloads from accidental repeats, helping businesses, cloud storage providers and data platforms keep their systems clean and efficient.</p>
             </div>
-        </section>
+            <p class="tools"><b>Models</b> Random Forest, Isolation Forest, DBSCAN, LSTM, decision tree ensembles</p>
+          </div>
+        </li>
+        <li class="project" data-cat="ai">
+          <span class="tag">AI and ML</span>
+          <h3>De-smoking and de-hazing for rescue operations</h3>
+          <p>A deep learning model that removes smoke and haze from images and video so rescue teams can see clearly in real time.</p>
+          <p class="tools"><b>Built with</b> GANs, CNNs, CycleGAN, Pix2Pix, DehazeNet</p>
+        </li>
+        <li class="project" data-cat="ai">
+          <span class="tag">AI and ML</span>
+          <h3>Sign language translation</h3>
+          <p>Hand gesture recognition that helps deaf and mute people communicate, using hand-skeleton tracking and a rule-based classifier.</p>
+          <p class="tools"><b>Built with</b> OpenCV, MediaPipe, image processing</p>
+        </li>
+        <li class="project" data-cat="data ai">
+          <span class="tag">Data and finance</span>
+          <h3>Predictive analytics for stock trends</h3>
+          <p>Forecasts market trends from historical prices and sentiment analysis to support data-driven investment decisions.</p>
+          <p class="tools"><b>Built with</b> LSTM, ARIMA, Random Forest, XGBoost</p>
+        </li>
+        <li class="project" data-cat="hw">
+          <span class="tag">Hardware</span>
+          <h3>Infrared fire detector</h3>
+          <p>Detects heat signatures and flame intensity in real time and triggers alerts, built to plug into IoT and alarm systems.</p>
+          <p class="tools"><b>Built with</b> IR diodes, sensor automation, IoT</p>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="section-container">
-                <h2 class="section-title" data-scroll="fade-up">Let's Connect</h2>
-                <div class="contact-content" data-scroll="fade-up">
-                    <p class="contact-message">Hit me up if you want to chat about tech, data, products, or just ideas.</p>
+  <section id="volunteering" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Volunteering</h2>
+        <p>Service, leadership and community work alongside study.</p>
+      </div>
+      <ul class="vol" id="volList">
+        <li><h3>National Cadet Corps</h3><div class="r">Corporal</div><p>Discipline, leadership and national service, including civil rights and social action programmes.</p></li>
+        <li><h3>ISKCON</h3><div class="r">Coordinator of volunteers</div><p>Coordinated volunteer teams running community programmes, events and outreach.</p></li>
+        <li><h3>Smile Foundation</h3><div class="r">Fundraiser</div><p>Raised funds for underprivileged children's education and healthcare.</p></li>
+        <li><h3>Reap Benefit</h3><div class="r">Environmental volunteer</div><p>Sustainability projects promoting eco-friendly practice and climate awareness.</p></li>
+        <li hidden><h3>Art of Living</h3><div class="r">Volunteer</div><p>Programmes for mental wellbeing, stress management and community development.</p></li>
+        <li hidden><h3>National Service Scheme</h3><div class="r">Student volunteer</div><p>Awareness campaigns, social welfare programmes and rural development.</p></li>
+        <li hidden><h3>Ajeenkya DY Patil University</h3><div class="r">Event organiser</div><p>Planned and ran cultural and technical events for the student community.</p></li>
+      </ul>
+      <button class="more-btn" id="moreVol" aria-expanded="false">Show all 7</button>
 
-                    <div class="resume-download">
-                        <a href="./Nakuul%20Agarwaal's%20Resume.pdf" download="Nakuul Agarwaal's Resume.pdf" class="resume-link">
-                            <span class="cloud-icon">☁️</span>
-                            <span class="resume-text">Download My Resume</span>
-                        </a>
-                    </div>
+      <div style="margin-top:4rem">
+        <h3 class="sub-label">Certifications</h3>
+        <ul class="certs" id="certList">
+          <li><b>Oracle Cloud Infrastructure Foundations Associate</b><span class="y">2024</span><span class="by">Oracle</span></li>
+          <li><b>AWS Cloud Practitioner</b><span class="y">2023</span><span class="by">Amazon Web Services</span></li>
+          <li><b>Natural Language Processing</b><span class="y">2023</span><span class="by">DeepLearning.AI</span></li>
+          <li><b>Introduction to Artificial Intelligence</b><span class="y">2022</span><span class="by">IBM</span></li>
+          <li hidden><b>Google Cloud Platform</b><span class="y">2022</span><span class="by">Google Developers Group</span></li>
+          <li hidden><b>Python for Everybody</b><span class="y">2022</span><span class="by">University of Michigan</span></li>
+          <li hidden><b>Basics of Financial Markets</b><span class="y">2022</span><span class="by">Elearnmarkets</span></li>
+        </ul>
+        <button class="more-btn" id="moreCerts" aria-expanded="false">Show all certifications</button>
+      </div>
+    </div>
+  </section>
 
-                    <div class="contact-icons">
-                        <a href="mailto:nakuul.agrawaal@gmail.com" class="icon-link" aria-label="Email" target="_blank">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/Nakuul01" target="_blank" class="icon-link" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/nakuulagarwaal" target="_blank" class="icon-link" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/nakuul_agarwaal" target="_blank" class="icon-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="contact" class="sec contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Let's connect</h2>
+        <p>Have something interesting to ask or share? I'd like to hear it.</p>
+      </div>
+      <div class="mail-row">
+        <a class="mail" href="mailto:nakuul.agarwaal@gmail.com">nakuul.agarwaal@gmail.com</a>
+        <button class="copy" id="copyMail" aria-live="polite">Copy email</button>
+      </div>
+      <div class="hero-links" style="margin-top:0">
+        <a class="pill solid" href="https://nakuul01.github.io/Portfolio/Nakuul%20Agarwaal's%20Resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+        <a class="pill" href="https://linkedin.com/in/nakuulagarwaal" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="pill" href="https://github.com/Nakuul01" target="_blank" rel="noopener">GitHub</a>
+        <a class="pill" href="https://instagram.com/nakuul_agarwaal" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Build With Intention</p>
-        </footer>
-    </main>
+<footer>
+  <div class="wrap"><span class="tag">Build with intention.</span><span>Nakuul Agarwaal, <span id="yr">2026</span></span></div>
+</footer>
 
-    <script src="app.js"></script>
+<script>
+(function(){
+  var yr=document.getElementById('yr'); if(yr) yr.textContent=new Date().getFullYear();
+
+  var st=document.getElementById('statement');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(st&&!reduce){
+    var words=st.textContent.trim().split(/\s+/);
+    st.setAttribute('aria-label',st.textContent.trim());
+    st.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="animation-delay:'+(0.15+i*0.06).toFixed(2)+'s">'+w+'</span>';}).join(' ');
+  }
+
+  function reveal(btn,items,openText,closeText){
+    if(!btn) return;
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('aria-expanded')==='true';
+      items.forEach(function(el){el.hidden=open;});
+      btn.setAttribute('aria-expanded',String(!open));
+      btn.textContent=open?openText:closeText;
+    });
+  }
+  reveal(document.getElementById('moreRoles'),Array.prototype.slice.call(document.querySelectorAll('.roles .older')),'Show 3 earlier roles','Show fewer roles');
+  reveal(document.getElementById('moreVol'),Array.prototype.slice.call(document.querySelectorAll('#volList li[hidden]')),'Show all 7','Show fewer');
+  reveal(document.getElementById('moreCerts'),Array.prototype.slice.call(document.querySelectorAll('#certList li[hidden]')),'Show all certifications','Show fewer');
+
+  document.querySelectorAll('[data-toggle]').forEach(function(btn){
+    var target=document.getElementById(btn.getAttribute('data-toggle'));
+    var label=btn.textContent;
+    btn.addEventListener('click',function(){
+      var open=btn.getAttribute('aria-expanded')==='true';
+      target.hidden=open;
+      btn.setAttribute('aria-expanded',String(!open));
+      btn.textContent=open?label:'Hide';
+    });
+  });
+
+  var fbtns=document.querySelectorAll('.filters button');
+  var projects=document.querySelectorAll('.project');
+  fbtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-filter');
+      fbtns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+      projects.forEach(function(p){
+        var cats=p.getAttribute('data-cat').split(' ');
+        p.hidden=!(f==='all'||cats.indexOf(f)>-1);
+      });
+    });
+  });
+
+  var copy=document.getElementById('copyMail');
+  if(copy){
+    copy.addEventListener('click',function(){
+      var email='nakuul.agarwaal@gmail.com';
+      function done(){copy.textContent='Copied';setTimeout(function(){copy.textContent='Copy email';},2000);}
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(email).then(done,function(){window.location.href='mailto:'+email;});}
+        else{window.location.href='mailto:'+email;}
+      }catch(e){window.location.href='mailto:'+email;}
+    });
+  }
+
+  var links=document.querySelectorAll('.nav ul a');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){
+            var on=a.getAttribute('href')==='#'+e.target.id;
+            a.classList.toggle('on',on);
+            if(on){var ul=a.closest('ul');if(ul&&ul.scrollWidth>ul.clientWidth){ul.scrollLeft=a.offsetLeft-ul.clientWidth/2+a.offsetWidth/2;}}
+          });
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
 </body>
 </html>
