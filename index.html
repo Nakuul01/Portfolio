@@ -6,6 +6,18 @@
 <title>Nakuul Agarwaal</title>
 <meta name="theme-color" content="#090D16">
 <meta name="description" content="Nakuul Agarwaal: IT Infrastructure Assistant at UNSW and Master of Information Technology and Commerce student in Sydney. Experience, case studies and projects across network infrastructure, AI, cloud and strategy.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090D16'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='30' fill='%23FFB020'%3ENA%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nakuul Agarwaal">
+<meta property="og:description" content="Nakuul Agarwaal: IT Infrastructure Assistant at UNSW and Master of Information Technology and Commerce student in Sydney. Experience, case studies and projects across network infrastructure, AI, cloud and strategy.">
+<meta property="og:url" content="https://nakuul01.github.io/Portfolio/">
+<meta property="og:image" content="https://nakuul01.github.io/Portfolio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nakuul Agarwaal">
+<meta name="twitter:description" content="Nakuul Agarwaal: IT Infrastructure Assistant at UNSW and Master of Information Technology and Commerce student in Sydney. Experience, case studies and projects across network infrastructure, AI, cloud and strategy.">
+<meta name="twitter:image" content="https://nakuul01.github.io/Portfolio/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -76,6 +88,8 @@ main,header,footer,nav{position:relative;z-index:1}
 .facts li{position:relative;display:grid;grid-template-columns:6rem 1fr;gap:1rem;padding:.85rem 0 .85rem 1.3rem;border-top:1px solid var(--line)}
 .facts li:first-child{border-top:0}
 .facts li::before{content:"";position:absolute;left:0;top:1.35rem;width:.55rem;height:.55rem;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.facts li.learning::before{background:var(--amber);box-shadow:0 0 8px var(--amber);animation:lrnBlink 1.6s ease-in-out infinite}
+@keyframes lrnBlink{0%,100%{opacity:1;box-shadow:0 0 10px var(--amber)}50%{opacity:.25;box-shadow:0 0 2px var(--amber)}}
 .facts span:first-child{color:var(--muted)}
 .facts span:last-child{color:#fff;font-weight:600}
 
@@ -161,6 +175,10 @@ main,header,footer,nav{position:relative;z-index:1}
 /* volunteering */
 .vol{list-style:none;margin:0;padding:0;display:grid;gap:1.25rem}
 @media (min-width:800px){.vol{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.vol li{display:flex}
+.vol li>.slide{flex:1;width:100%}
+.grid2{align-items:stretch}
+.grid2>.slide{height:100%}
 .vol .slide{border-top-width:6px}
 .vol li:nth-child(4n+2) .slide{border-top-color:var(--blue)}
 .vol li:nth-child(4n+3) .slide{border-top-color:var(--aqua)}
@@ -168,7 +186,7 @@ main,header,footer,nav{position:relative;z-index:1}
 .vol .r{font-size:.98rem;color:var(--slide-link);font-weight:600;margin:.35rem 0 .5rem}
 .vol p{margin:0;font-size:1rem}
 .certs{list-style:none;margin:0;padding:0;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
-.certs li{display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;align-items:start;padding:.95rem 1.1rem;background:var(--rack);border:1px solid var(--line);border-radius:8px}
+.certs li{display:grid;grid-template-columns:1fr auto;grid-template-rows:1fr auto;gap:.3rem 1rem;align-items:start;padding:.95rem 1.1rem;background:var(--rack);border:1px solid var(--line);border-radius:8px}
 .certs b{font-weight:600;color:#fff;line-height:1.3}
 .certs .y{padding:.1rem .6rem;border-radius:6px;background:var(--amber);color:var(--ink);font-size:.85rem;font-weight:700;white-space:nowrap}
 .certs .by{grid-column:1 / -1;color:var(--muted);font-size:.95rem}
@@ -228,6 +246,37 @@ footer{background:#05080F;color:var(--muted);font-size:.95rem;padding:0 0 calc(2
 footer .tag2{font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:#fff}
 footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem;border-top:1px solid var(--line);padding-top:1.75rem}
 
+/* case breakdowns */
+.found3{margin:1.25rem 0 0;padding:1.1rem 1.3rem .5rem;background:#E2E7F1;border-radius:6px;border-left:6px solid var(--amber)}
+.found3 div{display:grid;gap:.1rem 1rem;margin-bottom:.8rem}
+.found3 dt{font-family:var(--display);font-weight:800;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--slide-link)}
+.found3 dd{margin:0}
+@media (min-width:640px){.found3 div{grid-template-columns:6rem 1fr}.found3 dt{padding-top:.28rem}}
+/* network diagram */
+.net-card{background:var(--rack);border:1px solid var(--line);border-radius:14px;padding:clamp(1.1rem,3.5vw,2rem)}
+.net-lead{margin:0 0 1rem;color:var(--muted);font-size:.98rem}
+.net{display:block;width:min(34rem,100%);height:auto;margin:0 auto}
+.net .nd{cursor:pointer;outline:none}
+.net .shape{fill:#1A2440;stroke:#5B66B5;stroke-width:2.5;transition:stroke .2s,fill .2s}
+.net text{fill:#D5DCEB;font:700 12px var(--display,sans-serif);letter-spacing:.06em;pointer-events:none}
+.net .uplinks path,.net .drops path{fill:none;stroke:#33426B;stroke-width:2.5;stroke-linecap:round}
+.net .uplinks path{stroke:#4A5C94;stroke-dasharray:5 9;animation:netflow 2.4s linear infinite}
+.net .hit{fill:none;stroke:transparent;stroke-width:16}
+.net .oob{fill:none;stroke:#FFB020;stroke-width:2.5;stroke-dasharray:3 6;stroke-linecap:round}
+.net .ports,.net .wifi{fill:none;stroke:#9AA6C2;stroke-width:2;stroke-linecap:round}
+.net .nd:hover .shape,.net .nd:focus-visible .shape{stroke:#9FB3FF}
+.net .nd.on .shape{stroke:var(--amber);fill:#22305A}
+.net .nd.on .uplinks path{stroke:var(--amber)}
+.net .nd:focus-visible{filter:drop-shadow(0 0 4px #9FB3FF)}
+@keyframes netflow{to{stroke-dashoffset:-28}}
+.net-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.25rem 0 1rem}
+.net-chips button{min-height:2.5rem;padding:.35rem 1rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--on-night);font:600 .95rem var(--sans);cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.net-chips button:hover{border-color:var(--amber)}
+.net-chips button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.net-info{border-top:1px solid var(--line);padding-top:1rem;min-height:7.5rem;text-align:left}
+.net-info h4{font-size:1.15rem;color:#fff;margin-bottom:.4rem}
+.net-info p{margin:0;color:var(--on-night)}
+
 @media (max-width:560px){
   .facts li{grid-template-columns:5.2rem 1fr;gap:.75rem}
   .hero-links .pill{flex:1 1 calc(50% - .5rem)}
@@ -236,6 +285,8 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
   html{scroll-behavior:auto}
   .blink{animation:none}
   .nav ul a,.more-btn,.filters button,.copy,.pill{transition:none}
+  .net .uplinks path{animation:none}
+  .facts li.learning::before{animation:none}
   .link *{animation:none!important}
   .lk-draw{stroke:#2EE59D;stroke-dashoffset:0}
   .lk-node{stroke:#2EE59D}
@@ -349,6 +400,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
           <li><span>Studying</span><span>Data Science and Strategy, UNSW</span></li>
           <li><span>Currently</span><span>IT Infrastructure, UNSW</span></li>
           <li><span>Focus</span><span>AI, cloud, business strategy</span></li>
+          <li class="learning"><span>Learning</span><span>Junos, AWS Solutions Architect</span></li>
         </ul>
       </div>
     </div>
@@ -462,6 +514,53 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
       </div>
       <button class="more-btn" id="moreRoles" aria-expanded="false" aria-controls="olderRoles">Show 3 earlier roles</button>
 
+      <h3 class="sub-label">Inside a campus network</h3>
+      <div class="net-card">
+        <p class="net-lead">A simplified spine-leaf layout. Tap a part to see what it does. This is a generic example, not a map of any real site.</p>
+        
+<svg class="net" id="net" viewBox="0 0 480 310" role="group" aria-label="Simplified spine-leaf network diagram. Each part is a button that explains what it does.">
+  <g class="nd" data-k="fibre" tabindex="0" role="button" aria-label="Fibre uplinks">
+    <g class="uplinks">
+      <path d="M150 72L60 128M150 72L180 128M150 72L300 128M150 72L420 128M330 72L60 128M330 72L180 128M330 72L300 128M330 72L420 128"/>
+    </g>
+    <path class="hit" d="M150 72L60 128M150 72L180 128M150 72L300 128M150 72L420 128M330 72L60 128M330 72L180 128M330 72L300 128M330 72L420 128"/>
+  </g>
+  <g class="nd" data-k="console" tabindex="0" role="button" aria-label="Console access">
+    <path class="oob" d="M362 50H400"/>
+    <rect class="shape" x="400" y="34" width="64" height="32" rx="7"/>
+    <text x="432" y="54" text-anchor="middle">CONSOLE</text>
+  </g>
+  <g class="nd" data-k="spine" tabindex="0" role="button" aria-label="Spine switches">
+    <rect class="shape" x="118" y="28" width="64" height="44" rx="8"/><text x="150" y="55" text-anchor="middle">SPINE</text>
+    <rect class="shape" x="298" y="28" width="64" height="44" rx="8"/><text x="330" y="55" text-anchor="middle">SPINE</text>
+  </g>
+  <g class="nd" data-k="leaf" tabindex="0" role="button" aria-label="Leaf switches">
+    <rect class="shape" x="28" y="128" width="64" height="40" rx="8"/><text x="60" y="153" text-anchor="middle">LEAF</text>
+    <rect class="shape" x="148" y="128" width="64" height="40" rx="8"/><text x="180" y="153" text-anchor="middle">LEAF</text>
+    <rect class="shape" x="268" y="128" width="64" height="40" rx="8"/><text x="300" y="153" text-anchor="middle">LEAF</text>
+    <rect class="shape" x="388" y="128" width="64" height="40" rx="8"/><text x="420" y="153" text-anchor="middle">LEAF</text>
+  </g>
+  <g class="drops"><path d="M60 168V204M180 168V204M300 168V204M420 168V204M60 226V248M180 226V248M300 226V248M420 226V248"/></g>
+  <g class="nd" data-k="patch" tabindex="0" role="button" aria-label="Patching and copper">
+    <rect class="shape" x="38" y="204" width="44" height="22" rx="4"/><rect class="shape" x="158" y="204" width="44" height="22" rx="4"/><rect class="shape" x="278" y="204" width="44" height="22" rx="4"/><rect class="shape" x="398" y="204" width="44" height="22" rx="4"/>
+    <path class="ports" d="M46 215h28M166 215h28M286 215h28M406 215h28"/>
+  </g>
+  <g class="nd" data-k="devices" tabindex="0" role="button" aria-label="Devices at the edge">
+    <circle class="shape" cx="60" cy="268" r="14"/><circle class="shape" cx="180" cy="268" r="14"/><circle class="shape" cx="300" cy="268" r="14"/><circle class="shape" cx="420" cy="268" r="14"/>
+    <path class="wifi" d="M53 266a10 10 0 0 1 14 0M56 270a6 6 0 0 1 8 0M173 266a10 10 0 0 1 14 0M176 270a6 6 0 0 1 8 0M293 266a10 10 0 0 1 14 0M296 270a6 6 0 0 1 8 0M413 266a10 10 0 0 1 14 0M416 270a6 6 0 0 1 8 0"/>
+  </g>
+</svg>
+        <div class="net-chips" role="group" aria-label="Network parts">
+          <button data-k="spine" aria-pressed="false">Spine</button>
+          <button data-k="leaf" aria-pressed="true">Leaf</button>
+          <button data-k="fibre" aria-pressed="false">Fibre</button>
+          <button data-k="patch" aria-pressed="false">Patching</button>
+          <button data-k="console" aria-pressed="false">Console</button>
+          <button data-k="devices" aria-pressed="false">Devices</button>
+        </div>
+        <div class="net-info" aria-live="polite"><h4 id="netT"></h4><p id="netD"></p></div>
+      </div>
+
       <h3 class="sub-label">Education</h3>
       <div class="grid2">
         <article class="slide slide-sm">
@@ -506,12 +605,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
               <p class="foot" style="margin-top:.9rem">Source: OneTap Bharat proposal. The OneTap bar shows the top of the estimated range.</p>
             </div>
           </div>
-          <ul class="found" id="onetap-more" hidden>
-            <li>Followed one real commute, Virar to Ghatkopar, across train, Metro and bus: three payment systems, two or three apps, and about ₹452 a week with no cap.</li>
-            <li>Benchmarked Sydney's Opal fare rules and costs, then designed a fare layer for Mumbai: ₹5 off for switching modes, a ₹350 weekly cap, and rail never costing more than the season pass.</li>
-            <li>Estimated the build at ₹165–435 crore against Opal's ₹8,200 crore, showing the real decision is the discount subsidy, not the technology.</li>
-            <li>Planned a four-phase rollout and risk response built around a revenue-sharing agreement with Indian Railways.</li>
-          </ul>
+          <dl class="found3" id="onetap-more" hidden><div><dt>Problem</dt><dd>Followed one real commute, Virar to Ghatkopar, across train, Metro and bus: three payment systems, two or three apps, and about ₹452 a week with no cap.</dd></div><div><dt>Approach</dt><dd>Benchmarked Sydney's Opal fare rules and costs, then designed a fare layer for Mumbai: ₹5 off for switching modes, a ₹350 weekly cap, and rail never costing more than the season pass.</dd></div><div><dt>Outcome</dt><dd>Estimated the build at ₹165–435 crore against Opal's ₹8,200 crore, so the real decision is the discount subsidy, not the technology. Planned a four-phase rollout built around a revenue-sharing agreement with Indian Railways.</dd></div></dl>
         </article>
 
         <div class="grid2">
@@ -523,11 +617,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
               <button class="linkish" data-toggle="hsbc-more" aria-expanded="false" aria-controls="hsbc-more">What I looked at</button>
               <a class="linkish" href="https://nakuul01.github.io/HSBC/" target="_blank" rel="noopener">See the solution</a>
             </div>
-            <ul class="found" id="hsbc-more" hidden>
-              <li>Mapped income streams and customer banking solutions.</li>
-              <li>Analysed technology investment, cloud-based risk infrastructure and digital transformation.</li>
-              <li>Identified gains in customer value, process efficiency and risk responsiveness in a digital-first market.</li>
-            </ul>
+            <dl class="found3" id="hsbc-more" hidden><div><dt>Scope</dt><dd>Mapped income streams and customer banking solutions.</dd></div><div><dt>Analysis</dt><dd>Analysed technology investment, cloud-based risk infrastructure and digital transformation.</dd></div><div><dt>Finding</dt><dd>Identified gains in customer value, process efficiency and risk responsiveness in a digital-first market.</dd></div></dl>
           </article>
           <article class="slide slide-sm" style="border-top-color:var(--aqua)">
             <h3>Vodafone</h3>
@@ -537,11 +627,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
               <button class="linkish" data-toggle="voda-more" aria-expanded="false" aria-controls="voda-more">What I looked at</button>
               <a class="linkish" href="https://nakuul01.github.io/Vodafone/" target="_blank" rel="noopener">See the solution</a>
             </div>
-            <ul class="found" id="voda-more" hidden>
-              <li>Evaluated customer plans, service monetisation and operating efficiency as performance drivers.</li>
-              <li>Assessed retention potential and digital engagement strategy.</li>
-              <li>Highlighted upside from customer adoption and scalable growth across core operations.</li>
-            </ul>
+            <dl class="found3" id="voda-more" hidden><div><dt>Scope</dt><dd>Evaluated customer plans, service monetisation and operating efficiency as performance drivers.</dd></div><div><dt>Analysis</dt><dd>Assessed retention potential and digital engagement strategy.</dd></div><div><dt>Finding</dt><dd>Highlighted upside from customer adoption and scalable growth across core operations.</dd></div></dl>
           </article>
         </div>
       </div>
@@ -738,6 +824,31 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
         else{window.location.href='mailto:'+email;}
       }catch(e){window.location.href='mailto:'+email;}
     });
+  }
+
+  var NET={
+    spine:['Spine switches','The backbone. Every leaf connects to every spine, so traffic always has more than one path and a single failed link does not take a building offline.'],
+    leaf:['Leaf switches','Where devices connect. A leaf serves a building or floor and uplinks to every spine. This is the layer I install, cable and configure, across Juniper, Cisco and Aruba platforms.'],
+    fibre:['Fibre uplinks','Fibre carries the fast links between rooms and buildings, from leaf to spine. Clean routing, the right connectors, clean ends and clear labels keep a link healthy.'],
+    patch:['Patching and copper','In the comms room, patch panels connect switch ports to wall outlets with copper patch leads. Cable testers confirm each run, and every port and lead is labelled to standard so the next person can trace it in seconds.'],
+    console:['Console access','A console server gives out-of-band access to switches, so they can be reached and recovered even when the main network is down. First-time setup of a switch starts at its console port.'],
+    devices:['Devices at the edge','Wi-Fi access points, lab and desk outlets, screens and sensors. Everything people actually use sits at the edge, which is why every layer behind it has to be reliable.']
+  };
+  var netEl=document.getElementById('net');
+  if(netEl){
+    var nT=document.getElementById('netT'),nD=document.getElementById('netD');
+    var nodes=netEl.querySelectorAll('.nd'),chips=document.querySelectorAll('.net-chips button');
+    var pick=function(k){
+      nT.textContent=NET[k][0];nD.textContent=NET[k][1];
+      nodes.forEach(function(n){n.classList.toggle('on',n.getAttribute('data-k')===k);});
+      chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-k')===k));});
+    };
+    nodes.forEach(function(n){
+      n.addEventListener('click',function(){pick(n.getAttribute('data-k'));});
+      n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n.getAttribute('data-k'));}});
+    });
+    chips.forEach(function(c){c.addEventListener('click',function(){pick(c.getAttribute('data-k'));});});
+    pick('leaf');
   }
 
   var syd=document.getElementById('syd');
