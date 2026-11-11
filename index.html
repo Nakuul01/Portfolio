@@ -59,7 +59,6 @@ main,header,footer,nav{position:relative;z-index:1}
 .hero{padding-block:clamp(2.75rem,7vw,5rem) clamp(3rem,7vw,5rem);background:radial-gradient(40rem 22rem at 85% 22%,rgba(91,132,255,.16),transparent 70%),var(--night)}
 .hero-grid{display:grid;gap:2.5rem 3.5rem;align-items:center}
 @media (min-width:900px){.hero-grid{grid-template-columns:1.15fr .85fr}}
-.role-line{font-size:1.05rem;color:var(--muted);margin-bottom:1.1rem;max-width:30rem}
 .hero h1{font-size:clamp(3rem,10.5vw,7rem);font-weight:900;font-stretch:112%;letter-spacing:-.035em;line-height:.92;color:#fff}
 .hero h1 span{display:block}
 .title{margin:1.75rem 0 0;max-width:34rem;padding-left:1.1rem;border-left:5px solid var(--amber);font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,2.5vw,1.6rem);line-height:1.3;color:#fff;letter-spacing:-.01em}
@@ -176,17 +175,37 @@ main,header,footer,nav{position:relative;z-index:1}
 
 /* contact */
 .contact{background:linear-gradient(180deg,var(--night),#0D1426)}
-.mail-row{display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem 1.5rem;margin-bottom:2.25rem}
-.mail{font-family:var(--display);font-weight:800;font-stretch:104%;font-size:clamp(1.35rem,5vw,2.8rem);letter-spacing:-.025em;color:#fff;text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:5px;text-underline-offset:.18em;overflow-wrap:anywhere}
-.mail:hover{text-decoration-thickness:8px}
-.copy{padding:.5rem 1.2rem;border:1px solid var(--amber);border-radius:8px;font-size:1rem;font-weight:600;color:var(--amber);min-height:2.9rem;transition:background .2s,color .2s}
+.contact-card{background:var(--rack);border:1px solid var(--line);border-radius:14px;padding:clamp(1.25rem,4vw,2.25rem);max-width:44rem}
+.contact-card .sec-head{margin-bottom:1.5rem}
+.contact-card .sec-head h2{font-size:clamp(1.7rem,4.5vw,2.4rem)}
+.mail-row{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-bottom:1.5rem}
+.mail{font-family:var(--display);font-weight:700;font-size:clamp(1rem,3.8vw,1.3rem);letter-spacing:-.01em;color:#fff;text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:.2em;overflow-wrap:anywhere}
+.mail:hover{text-decoration-thickness:3px}
+.copy{padding:.4rem 1rem;border:1px solid var(--amber);border-radius:8px;font-size:.95rem;font-weight:600;color:var(--amber);min-height:2.5rem;transition:background .2s,color .2s}
 .copy:hover{background:var(--amber);color:var(--ink)}
 .hero-links{display:flex;flex-wrap:wrap;gap:.9rem}
 .pill{display:inline-flex;align-items:center;justify-content:center;min-height:2.9rem;padding:.55rem 1.25rem;border:1px solid var(--line);border-radius:8px;font-size:1rem;font-weight:600;text-decoration:none;color:#fff;background:var(--rack);transition:background .15s,border-color .15s}
 .pill:hover{border-color:var(--amber);text-decoration:none}
 .pill.solid{background:var(--amber);border-color:var(--amber);color:var(--ink)}
 .pill.solid:hover{background:#fff;border-color:#fff}
-.socket{display:block;width:min(28rem,85%);height:auto;margin-top:3.5rem}
+.socket{display:block;width:min(26rem,100%);height:auto;margin:2rem auto 0;overflow:visible}
+.socket *{transform-box:fill-box}
+.socket.armed *{animation-play-state:paused!important}
+.socket.armed.run *{animation-play-state:running!important}
+.sk-plug{animation:skPlug 7s cubic-bezier(.65,0,.35,1) infinite}
+.sk-body{fill:none;stroke:#5B66B5;stroke-width:4;animation:skBody 7s linear infinite}
+.sk-flow{stroke:#2EE59D;stroke-width:3;stroke-linecap:round;stroke-dasharray:6 14;opacity:0;animation:skFlow 7s linear infinite}
+.sk-ring{fill:none;stroke:#2EE59D;stroke-width:3;opacity:0;transform-origin:center;animation:skRing 7s ease-out infinite}
+.sk-ok{opacity:0;transform-origin:center;animation:skOk 7s ease-out infinite}
+.sk-t1{fill:var(--muted);font:600 13px var(--display,sans-serif);letter-spacing:.04em;animation:skT1 7s linear infinite}
+.sk-t2{fill:#2EE59D;font:700 13px var(--display,sans-serif);letter-spacing:.04em;opacity:0;animation:skT2 7s linear infinite}
+@keyframes skPlug{0%,22%{transform:translateX(-38px)}42%,86%{transform:translateX(0)}100%{transform:translateX(-38px)}}
+@keyframes skBody{0%,40%{stroke:#5B66B5}44%,86%{stroke:#2EE59D}92%,100%{stroke:#5B66B5}}
+@keyframes skFlow{0%,45%{opacity:0;stroke-dashoffset:0}50%{opacity:1}86%{opacity:1;stroke-dashoffset:-140}92%,100%{opacity:0;stroke-dashoffset:-140}}
+@keyframes skRing{0%,41%{opacity:0;transform:scale(.6)}43%{opacity:.9;transform:scale(.8)}62%,100%{opacity:0;transform:scale(1.7)}}
+@keyframes skOk{0%,42%{opacity:0;transform:scale(.3)}49%{opacity:1;transform:scale(1.2)}54%,86%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(.3)}}
+@keyframes skT1{0%,42%{opacity:1}44%,90%{opacity:0}94%,100%{opacity:1}}
+@keyframes skT2{0%,43%{opacity:0}48%,86%{opacity:1}91%,100%{opacity:0}}
 footer{background:#05080F;color:var(--muted);font-size:.95rem;padding:0 0 calc(2rem + env(safe-area-inset-bottom,0px))}
 footer .tag2{font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:#fff}
 footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.35rem;border-top:1px solid var(--line);padding-top:1.75rem}
@@ -199,6 +218,11 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
   html{scroll-behavior:auto}
   .blink{animation:none}
   .nav ul a,.more-btn,.filters button,.copy,.pill{transition:none}
+  .socket *{animation:none!important}
+  .sk-plug{transform:none}
+  .sk-body{stroke:#2EE59D}
+  .sk-ok,.sk-t2{opacity:1}
+  .sk-t1{opacity:0}
 }
 </style>
 </head>
@@ -223,7 +247,6 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="role-line">Sydney-based engineer and strategist. IT Infrastructure Assistant at UNSW, studying Information Technology and Commerce.</p>
           <h1><span>Nakuul</span><span>Agarwaal</span></h1>
           <p class="title">I don't want to solve a problem once. I want to solve it for every way it could show up, and see the next three coming.</p>
         </div>
@@ -597,6 +620,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
 
   <section id="contact" class="sec contact">
     <div class="wrap">
+     <div class="contact-card">
       <div class="sec-head">
         <h2>Let's connect</h2>
         <p>Have something interesting to ask or share? I'd like to hear it.</p>
@@ -611,15 +635,26 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
         <a class="pill" href="https://github.com/Nakuul01" target="_blank" rel="noopener">GitHub</a>
         <a class="pill" href="https://instagram.com/nakuul_agarwaal" target="_blank" rel="noopener">Instagram</a>
       </div>
-      <svg class="socket" viewBox="0 0 320 120" aria-hidden="true">
-        <path d="M0 60H70" stroke="#FFB020" stroke-width="12" stroke-linecap="round" fill="none"/>
-        <rect x="66" y="30" width="96" height="60" rx="8" fill="#D5DCEB"/>
-        <rect x="76" y="22" width="40" height="12" rx="3" fill="#D5DCEB"/>
-        <path d="M162 40h22M162 50h22M162 60h22M162 70h22M162 80h22" stroke="#FFB020" stroke-width="4" stroke-linecap="round" fill="none"/>
-        <rect x="190" y="14" width="124" height="92" rx="12" fill="#1A2440" stroke="#5B66B5" stroke-width="4"/>
+      <svg class="socket" id="socket" viewBox="0 0 320 140" aria-hidden="true">
+        <rect x="190" y="14" width="124" height="92" rx="12" fill="#1A2440"/>
         <rect x="204" y="30" width="96" height="60" rx="6" fill="#05080F"/>
-        <path d="M216 38v16M226 38v16M236 38v16M246 38v16M256 38v16M266 38v16M276 38v16M286 38v16" stroke="#FFB020" stroke-width="3" stroke-linecap="round"/>
+        <rect class="sk-body" x="190" y="14" width="124" height="92" rx="12"/>
+        <g class="sk-plug">
+          <path d="M-80 60H100" stroke="#FFB020" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path class="sk-flow" d="M0 60H96" fill="none"/>
+          <rect x="96" y="30" width="96" height="60" rx="8" fill="#D5DCEB"/>
+          <rect x="106" y="22" width="40" height="12" rx="3" fill="#D5DCEB"/>
+          <path d="M192 44h22M192 60h22M192 76h22" stroke="#FFB020" stroke-width="5" stroke-linecap="round" fill="none"/>
+        </g>
+        <circle class="sk-ring" cx="302" cy="22" r="14"/>
+        <g class="sk-ok">
+          <circle cx="302" cy="22" r="14" fill="#2EE59D"/>
+          <path d="M295 22l5 5 9-10" stroke="#05080F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <text class="sk-t1" x="252" y="130" text-anchor="middle">Connecting…</text>
+        <text class="sk-t2" x="252" y="130" text-anchor="middle">Connected</text>
       </svg>
+     </div>
     </div>
   </section>
 </main>
@@ -679,6 +714,18 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
         else{window.location.href='mailto:'+email;}
       }catch(e){window.location.href='mailto:'+email;}
     });
+  }
+
+  var sock=document.getElementById('socket');
+  if(sock&&'IntersectionObserver' in window){
+    sock.classList.add('armed');
+    var so=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){sock.classList.remove('run');void sock.getBoundingClientRect();sock.classList.add('run');}
+        else{sock.classList.remove('run');}
+      });
+    },{threshold:.6});
+    so.observe(sock);
   }
 
   var links=document.querySelectorAll('.nav ul a');
