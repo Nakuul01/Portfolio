@@ -189,6 +189,10 @@ main,header,footer,nav{position:relative;z-index:1}
 .pill.solid{background:var(--amber);border-color:var(--amber);color:var(--ink)}
 .pill.solid:hover{background:#fff;border-color:#fff}
 .contact-card{margin-inline:auto;text-align:center}
+.loc{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.4rem .55rem;margin:0 0 1.25rem;color:var(--muted);font-size:.95rem}
+.loc svg{color:var(--amber);flex:none}
+.loc .sep{opacity:.5}
+#syd{color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
 .contact-card .sec-head{margin-inline:auto}
 .contact-card .sec-head h2::after{left:50%;transform:translateX(-50%)}
 .contact-card .mail-row,.contact-card .hero-links{justify-content:center}
@@ -640,6 +644,7 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
         <h2>Let's connect</h2>
         <p>Have something interesting to ask or share? I'd like to hear it.</p>
       </div>
+      <p class="loc"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Sydney, Australia</span><span class="sep" aria-hidden="true">·</span><span id="syd">--:--</span></p>
       <div class="mail-row">
         <a class="mail" href="mailto:nakuul.agarwaal@gmail.com">nakuul.agarwaal@gmail.com</a>
         <button class="copy" id="copyMail" aria-live="polite">Copy email</button>
@@ -733,6 +738,19 @@ footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:ce
         else{window.location.href='mailto:'+email;}
       }catch(e){window.location.href='mailto:'+email;}
     });
+  }
+
+  var syd=document.getElementById('syd');
+  if(syd){
+    var tick=function(){
+      try{
+        var now=new Date();
+        var t=new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',hour:'numeric',minute:'2-digit',hour12:true}).format(now).toUpperCase();
+        var z=new Intl.DateTimeFormat('en-AU',{timeZone:'Australia/Sydney',timeZoneName:'short'}).formatToParts(now).filter(function(p){return p.type==='timeZoneName';})[0];
+        syd.textContent=t+(z?' '+z.value:'');
+      }catch(e){syd.textContent='';}
+    };
+    tick(); setInterval(tick,15000);
   }
 
   var viz=document.getElementById('link');
